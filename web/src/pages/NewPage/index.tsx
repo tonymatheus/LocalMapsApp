@@ -17,10 +17,9 @@ import { TileLayer, Marker } from "react-leaflet";
 import { categories } from "./categories";
 import { useGetLocation } from "../../Hooks/useGeolocation";
 import { toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function New() {
-  const history = useHistory();
+export default function NewPage() {
   const [formValues, setFormValues] = useState({
     name: "",
     description: "",
@@ -29,7 +28,7 @@ export default function New() {
     coords: [0, 0],
   });
   const { coords } = useGetLocation();
-
+  const navigate = useNavigate();
   async function onSubmit() {
     const request = await fetch("http://localhost:3000/store", {
       method: "POST",
@@ -47,7 +46,7 @@ export default function New() {
       toast("Estabelecimento gravado com sucesso!", {
         type: "success",
         autoClose: 2000,
-        onClose: () => history.push("/"),
+        onClose: () => navigate("/"),
       });
     }
   }
