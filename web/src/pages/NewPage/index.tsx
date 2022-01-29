@@ -35,11 +35,11 @@ export default function NewPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify({
-      //   ...formValues,
-      //   latitude: coords[0],
-      //   longitude: coords[1],
-      // }),
+      body: JSON.stringify({
+        ...formValues,
+        latitude: formValues.coords[0],
+        longitude: formValues.coords[1],
+      }),
     });
 
     if (request.ok) {
