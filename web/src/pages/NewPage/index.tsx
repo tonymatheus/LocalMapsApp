@@ -15,7 +15,7 @@ import { useState } from "react";
 import { LatLngExpression, LeafletMouseEvent } from "leaflet";
 import { TileLayer, Marker } from "react-leaflet";
 import { categories } from "./categories";
-import { useGetLocation } from "../../Hooks/useGeolocation";
+import useGetLocation from "../../Hooks/useGeolocation";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -35,11 +35,11 @@ export default function NewPage() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        ...formValues,
-        latitude: formValues.coords[0],
-        longitude: formValues.coords[1],
-      }),
+      // body: JSON.stringify({
+      //   ...formValues,
+      //   latitude: coords[0],
+      //   longitude: coords[1],
+      // }),
     });
 
     if (request.ok) {
@@ -121,7 +121,7 @@ export default function NewPage() {
         <Section>Categoria</Section>
 
         <CategoryContainer>
-          {categories.map((category: any) => (
+          {categories.map((category) => (
             <CategoryBox
               key={category.key}
               onClick={() => {
