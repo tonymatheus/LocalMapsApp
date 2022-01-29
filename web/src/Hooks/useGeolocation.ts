@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const defaultCoords = [-23.55052, -46.633308];
 
-export function useGetLocation() {
+export default function useGetLocation() {
   const [coords, setCoords] = useState<number[] | null>(null);
 
   useEffect(() => {
